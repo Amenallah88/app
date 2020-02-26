@@ -2,9 +2,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>app</groupId>
+	<groupId>com</groupId>
 	<artifactId>app</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.5-SNAPSHOT</version>
 	
 	<dependencies>
 	  
@@ -13,11 +13,15 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
+		<dependency>
+    			<groupId>org.apache.maven.plugins</groupId>
+    			<artifactId>maven-deploy-plugin</artifactId>
+    			<version>2.7</version>
+		</dependency>
 		
 	</dependencies>
-
-	<build>
-		<plugins>
+<build>		
+  <plugins>
 			  <!-- packaging de l'application -->
             <plugin>
                 <!-- NOTE: We don't need a groupId specification because the group is
@@ -46,4 +50,21 @@
             </plugin>
 		</plugins>
 	</build>
+	<repositories>
+		<repository>
+			 <id>central</id>
+                        <name>Central Repository</name>
+			<url>https://repo1.maven.org/maven2/</url>
+		</repository>
+	</repositories>
+	<distributionManagement>
+		  <repository>
+			  <id>deployment</id>
+			  <url>http://192.168.8.117:8081/repository/maven-releases/</url>
+	           </repository>
+		  <snapshotRepository>
+		      <id>deployment</id>
+		      <url>http://192.168.8.117:8081/repository/maven-snapshots/</url>
+		  </snapshotRepository>
+  	</distributionManagement>
 </project>
